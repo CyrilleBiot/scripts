@@ -38,3 +38,4 @@ echo "None F1 :ExecCommand xfce4-screenshooter & " >> /home/$USER/.fluxbox/keys
 # Avertissement
 echo "Think to restart your fluxbox session."
 
+
