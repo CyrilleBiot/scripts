@@ -1,5 +1,4 @@
 # Gestion du nombre de joueurs
-from typing import List
 
 nb_joueurs = -1
 while True:
