@@ -13,3 +13,12 @@ TODO
 TODO ++
 Refonte avec tkinter
 
+Changelog
+* mercredi 8 janvier 2020, 20:44:51 (UTC+0100)
+  version 3.1.1
+  Amélioration de la fonction de calcul des points
+
+* mercredi 8 janvier 2020, 13:44:51 (UTC+0100)
+  version 3.1.0
+  Correction Bug décompte des points
+  Correction nommage de variables
