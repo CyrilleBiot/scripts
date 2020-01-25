@@ -20,15 +20,15 @@ import platform
 import subprocess
 import socket
 
-
+'''
 # Ubuntu ou DEBIAN
 if 'Debian' in platform.version():
     # Si DEBIAN, verif si rooot lance le script
     if not os.geteuid() == 0:
         sys.exit("Only root can run this script")
+'''
 
-
-def getNetworkIp():
+def ipRecuperation():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
     s.connect(('<broadcast>', 0))
@@ -53,11 +53,12 @@ while True:
             print('Préciser : client OU serveur.')
             print('ATTENTION A LA CASSE. Pas de majuscule.')
     except ValueError:
-        print("Oops!  Réponse incorrecte, ce n'est pas un nombre... Réessayer...")
+        print("Oops!  Réponse incorrecte... Réessayer...")
 
 
 if choixInstall == 'serveur':
     portACN = 3142
+    ipServeur = ipRecuperation()
 
     # Installation SERVEUR
     # Tester si le package apt-cacher-ng est installé ou non
@@ -71,9 +72,8 @@ if choixInstall == 'serveur':
     print("Le port d'écoute est : {}".format(portACN))
     print("Page d'aministration")
     print("Notez bien l'ip de votre serveur, elle vous sera indispensable pour la configuration des clients.")
-    print("L'IP du serveur est : ")
+    print("L'IP du serveur est : {} ".format(ipServeur))
     print("Indispensable : cette IP doit être FIXE (réglage sur votre BOX ou serveur DHCP).")
-    print(getNetworkIp())
 
 else:
     # Installation client
@@ -93,10 +93,9 @@ else:
 
 
     print("Installation client.")
-'''
+
 # Reste à insérer l'ip et à le coller au bo n endroit    
-    msgApt = 'Acquire::http::Proxy "http://192.168.X.X:3142";'
-    fichier = open("/home/ragnarok/data.txt", "a")
-    fichier.write("B")
+    msgApt = 'Acquire::http::Proxy "' + ipServeur + ':3142";\n'
+    fichier = open("/home/ragnarok/data.txt", "w")
+    fichier.write(msgApt)
     fichier.close()
-'''

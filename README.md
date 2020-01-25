@@ -1,6 +1,16 @@
 Juste un espace de stockage pour quelques scripts.
 A mettre à jour...
 
+acn-py
+----------
+Script automatisant l'installation d'un serveur cache pour apt
+Initialement pour Primtux
+
+TODO
+- Test, pas testé
+- Interface graphique (gtk)
+
+
 tarot-v3.py
 -----------
 
