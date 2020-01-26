@@ -10,7 +10,7 @@ __author__ = "Cyrille BIOT"
 __copyright__ = "Copyleft"
 __credits__ = "Cyrille BIOT"
 __license__ = "GPL"
-__version__ = "0.1.1"
+__version__ = "0.1.2"
 __date__= "2020/01/26"
 __maintainer__ = "Cyrille BIOT"
 __email__ = "cyrille@cbiot.fr"
@@ -58,10 +58,11 @@ def installServeur():
             cmdInstall.insert(0,'sudo')
             cmdUpdate.insert(0,'sudo')
 
+        # On installe le paquet
         subprocess.run(cmdInstall)
         subprocess.run(cmdUpdate)
     else:
-        print('Le package apt-cacher-ng est déjà présent sur votre sytème.')
+        print('Le package apt-cacher-ng est déjà présent sur votre système.')
         sys.exit()
 
     # Affichage Informations
