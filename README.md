@@ -1,16 +1,27 @@
 Juste un espace de stockage pour quelques scripts.
-A mettre à jour...
 
+
+===================================================
 acn-py
 ----------
 Script automatisant l'installation d'un serveur cache pour apt
 Initialement pour Primtux
 
 TODO
-- Test, pas testé
 - Interface graphique (gtk)
+- voir pour un listage du réseau lors de l'install
+
+Changelog
+* dminache 26 janvier 2020, 20:44:51 (UTC+0100)
+   version 0.1.1
+   Opérationnelle, testée sous DEBIAN SID
+* mercredi 8 janvier 2020, 20:44:51 (UTC+0100)
+   version 0.1.0
+   Premier jet, non testé
 
 
+
+===================================================
 tarot-v3.py
 -----------
 
