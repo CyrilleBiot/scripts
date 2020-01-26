@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-""" Scrpit d'installation et de confgiration du serveur de cache apt
+""" Script d'installation et de configuration du serveur de cache apt
     apt-cacher-ng soit en tant que serveur (ajout du paquet sur le système
     soit en tant que client (cration d'un fichier de proxy apt)
 """
