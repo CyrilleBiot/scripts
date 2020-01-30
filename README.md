@@ -9,7 +9,7 @@ Initialement pour Primtux
 
 TODO
 - Interface graphique (gtk)
-- voir pour un listage du réseau lors de l'install
+- voir pour un listage du réseau lors de l'install (python-nmap)
 
 Changelog
 * dminache 26 janvier 2020, 20:44:51 (UTC+0100)
