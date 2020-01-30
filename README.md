@@ -8,11 +8,15 @@ Script automatisant l'installation d'un serveur cache pour apt
 Initialement pour Primtux
 
 TODO
+- batteries de test
 - Interface graphique (gtk)
-- voir pour un listage du réseau lors de l'install (python-nmap)
+
 
 Changelog
-* dminache 26 janvier 2020, 20:44:51 (UTC+0100)
+* jeudi 30 janvier 2020, 20:44:51 (UTC+0100)
+   Scan réseau (socket, python-nmap)
+   Fix des fonctions
+* dimanche 26 janvier 2020, 20:44:51 (UTC+0100)
    version 0.1.1
    Opérationnelle, testée sous DEBIAN SID
 * mercredi 8 janvier 2020, 20:44:51 (UTC+0100)
