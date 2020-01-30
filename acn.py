@@ -10,14 +10,15 @@ __author__ = "Cyrille BIOT"
 __copyright__ = "Copyleft"
 __credits__ = "Cyrille BIOT"
 __license__ = "GPL"
-__version__ = "0.1.1"
-__date__= "2020/01/26"
+__version__ = "0.1.2"
+__date__ = "2020/01/26"
 __maintainer__ = "Cyrille BIOT"
 __email__ = "cyrille@cbiot.fr"
 __status__ = "Devel"
 
 import os, re, sys
 import platform, subprocess, socket
+
 
 def baseDebian():
     """ Fonction permettant de connaitre le Systeme d'exploitant faisant tourner le script
@@ -35,6 +36,7 @@ def baseDebian():
         print('Vous utilisez un système non Debian (sudo pour adminstration).')
         admin = 'sudo'
     return admin
+
 
 def installServeur():
     """ Fonction installant le serveur de cache apt-cacher-ng """
@@ -55,23 +57,25 @@ def installServeur():
 
         # Adaptation système Ubuntu
         if admin == 'sudo':
-            cmdInstall.insert(0,'sudo')
-            cmdUpdate.insert(0,'sudo')
+            cmdInstall.insert(0, 'sudo')
+            cmdUpdate.insert(0, 'sudo')
 
+        # On installe le paquet
         subprocess.run(cmdInstall)
         subprocess.run(cmdUpdate)
     else:
-        print('Le package apt-cacher-ng est déjà présent sur votre sytème.')
+        print('Le package apt-cacher-ng est déjà présent sur votre système.')
         sys.exit()
 
     # Affichage Informations
     print("===============================================")
     print("Le serveur de cache est dès lors opérationnel")
     print("Le port d'écoute est : {}".format(portACN))
-    print("Page d'aministration : http://{}:{}/acng-report.html".format(ipServeur,portACN))
+    print("Page d'aministration : http://{}:{}/acng-report.html".format(ipServeur, portACN))
     print("Notez bien l'ip de votre serveur, elle vous sera indispensable pour la configuration des clients.")
     print("L'IP du serveur est : {} ".format(ipServeur))
     print("Indispensable : cette IP doit être FIXE (réglage sur votre BOX ou serveur DHCP).")
+
 
 def installClient(ip):
     """ Fonction installant un fichier de configuration apt pour les postes clients
@@ -87,13 +91,13 @@ def installClient(ip):
     fichier.write(msgApt)
     fichier.close()
 
+
 def ipRecuperation():
     """ Fonction récupérant l'adresse IPv 4 de la machine"""
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
     s.connect(('<broadcast>', 0))
     return s.getsockname()[0]
-
 
 
 def ipTest(ip):
@@ -103,6 +107,7 @@ def ipTest(ip):
         return True
     else:
         return False
+
 
 # ===========================
 # Lancement du script
@@ -114,7 +119,7 @@ def clientServeur():
     while True:
         try:
             choixInstall = input("Type d'installation (client/serveur) : ")
-            if choixInstall.lower() in ['client','serveur']:
+            if choixInstall.lower() in ['client', 'serveur']:
                 print('Installation de type {}'.format(choixInstall))
                 break
             else:
@@ -137,7 +142,5 @@ else:
             if ipTest(ipServeur) is True:
                 break
         except ValueError:
-            print("Oops!  Réponse incorrecte, ce n'est pas un nombre... Réessayer...")
+            print("Oops!  Réponse incorrecte... Réessayer...")
     installClient(ipServeur)
-
-
