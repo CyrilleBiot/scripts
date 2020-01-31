@@ -92,7 +92,7 @@ def installClient(ipServeur,portACN):
     """
     print("Installation client.")
     # Reste à insérer l'ip et à le coller au bo n endroit
-    msgApt = 'Acquire::http::Proxy "' + ipServeur + ':' + str(portACN) + '";\n'
+    msgApt = 'Acquire::http::Proxy "http://' + ipServeur + ':' + str(portACN) + '";\n'
     print(msgApt)
     dirInstall = '/etc/apt/apt.conf.d/'
     fileName = '00aptproxyANC'
