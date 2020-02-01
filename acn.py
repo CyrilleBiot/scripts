@@ -147,16 +147,22 @@ def clientServeur():
 def portStatus(ip, port):
     """
     Fonction de scanne d'un port d'une machine en fonction de son IP
-    :param ip:
-    :param port:
+    :param ip: IP de la machine à scanner
+    :param port: port à scanner
     :return: Retourne True si port ouvert ou False si port fermé
     """
-    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    try:
-        s.connect((ip, int(port)))
-        s.shutdown(2)
+
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(1)  #
+    result = sock.connect_ex((ip, port))
+    if result == 0:
+        message = str(ip) + ' : Le port ' + str(port) + ' est ouvert. Possibilié de serveur ACN.'
+        print(message)
         return True
-    except:
+    else:
+        message = str(ip) + ' : Le port est fermé. Code d\'erreur de retour; ' + str(result)
+        message += '. Pas de serveur ACN'
+        print(message)
         return False
 
 def chercherServeurACN(ip,port):
