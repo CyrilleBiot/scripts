@@ -13,6 +13,8 @@ TODO
 
 
 Changelog
+* samedi 2 février 2020, 20:44:51 (UTC+0100)
+   Récriture de la fonction de scan reseau
 * jeudi 30 janvier 2020, 20:44:51 (UTC+0100)
    Scan réseau (socket, python-nmap)
    Fix des fonctions
