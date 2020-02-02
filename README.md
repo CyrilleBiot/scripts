@@ -13,6 +13,9 @@ TODO
 
 
 Changelog
+* Dimanche 3 février, 15:26:00  (UTC+0100)
+  Ajout fonction main()
+  Return NONE pour les fonctions qui ne retournent rien
 * samedi 2 février 2020, 20:44:51 (UTC+0100)
    Récriture de la fonction de scan reseau
 * jeudi 30 janvier 2020, 20:44:51 (UTC+0100)
