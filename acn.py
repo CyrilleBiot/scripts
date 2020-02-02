@@ -46,7 +46,7 @@ def installServeur(ip, port):
     Fonction installant le serveur de cache apt-cacher-ng
     :param ip: IP du Serveur
     :param port: interger port ACN
-    :return:
+    :return: None
     """
     # Installation SERVEUR
     # Tester si le package apt-cacher-ng est installé ou non
@@ -81,6 +81,8 @@ def installServeur(ip, port):
     print("L'IP du serveur est : {} ".format(ipServeur))
     print("Indispensable : cette IP doit être FIXE (réglage sur votre BOX ou serveur DHCP).")
 
+    return None
+
 
 def installClient(ipServeur,portACN):
     """
@@ -88,7 +90,7 @@ def installClient(ipServeur,portACN):
     Créer un fichier dans /etc/apt/apt.conf.d/ ayant pour nom 00aptproxyANC
     :param ipServeur:  ip du serveur ACN
     :param portACN: port d'écoute du serveur ACN
-    :return:
+    :return: None
     """
     print("Installation client.")
     # Reste à insérer l'ip et à le coller au bo n endroit
@@ -100,7 +102,7 @@ def installClient(ipServeur,portACN):
     fichier = open(fileLocInstall, "w")
     fichier.write(msgApt)
     fichier.close()
-
+    return None
 
 def ipRecuperation():
     """
@@ -253,19 +255,27 @@ def validerIpServeurACN(listIp):
                 print("Oops!  Réponse incorrecte... Réessayer...")
     return ipServeur
 
-# ===========================
-# Lancement du script
-# ==========================
-choixInstall = clientServeur()
-if choixInstall.lower() == 'serveur':
-    portACN = 3142
-    ipServeur = ipRecuperation()
-    installServeur(ipServeur,portACN)
-else:
-    # Installation client
-    ip = ipRecuperation()
-    portACN = 3142
+def main():
+    """
+    :return: None
+    """
+    choixInstall = clientServeur()
+    if choixInstall.lower() == 'serveur':
+        portACN = 3142
+        ipServeur = ipRecuperation()
+        installServeur(ipServeur,portACN)
+    else:
+        # Installation client
+        ip = ipRecuperation()
+        portACN = 3142
 
-    ipServeur = chercherServeurACN(ip, portACN)
-    ipServeur = validerIpServeurACN(ipServeur)
-    installClient(ipServeur,portACN)
+        ipServeur = chercherServeurACN(ip, portACN)
+        ipServeur = validerIpServeurACN(ipServeur)
+        installClient(ipServeur,portACN)
+
+    return None
+
+
+if __name__ == "__main__":
+    # execute only if run as a script
+    main()
