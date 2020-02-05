@@ -4,6 +4,10 @@
 """ Script d'installation et de configuration du serveur de cache apt
     apt-cacher-ng soit en tant que serveur (ajout du paquet sur le système
     soit en tant que client (cration d'un fichier de proxy apt)
+    Possibilité pour les clients de choisir le port d'écoute du serveur
+    Installation de cron-apt avec configuration spécifique
+    pour installation automatique des mises à jour de sécurité des repo
+    présents sur le système
 """
 
 __author__ = "Cyrille BIOT"
