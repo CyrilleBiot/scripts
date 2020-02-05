@@ -1,10 +1,10 @@
 Juste un espace de stockage pour quelques scripts.
 
-
-===================================================
 acn-py
 ----------
 Script automatisant l'installation d'un serveur cache pour apt
+Install aussi cron-apt et configuration d'installation UNIQUEMENT automatique
+des mises à jour de sécurité
 Initialement pour Primtux
 
 TODO
@@ -13,6 +13,18 @@ TODO
 
 
 Changelog
+* Mercredi 5 février, 15:57:00  (UTC+0100)
+  Mise en place de l'installation pour les clients et le serveur d'un cron-apt automatisant :
+   - la récupération des mises à jour
+   - l'installation automatique des mises de sécurité
+  Réécriture de baseDebian(). Actif dès en mode install client et serveur
+  Ecriture des fonctions
+   - installPackage(paquet, distribution) pour automatiser l'installation de paquet .deb
+   - portSelection(portACN) --> permet de selectionner un port ACN différent du port par défaut
+   - installNmapModule(distrib) --> installation du module nmap si module non installé
+  Correction de bugs
+
+
 * Dimanche 3 février, 15:26:00  (UTC+0100)
   Ajout fonction main()
   Return NONE pour les fonctions qui ne retournent rien
