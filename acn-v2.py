@@ -39,7 +39,7 @@ def baseDebian():
     else:
         if not os.geteuid() == 0:
             print("Ce programme requiert un lancement via 'sudo'")
-            sys.exit("Ce programme doit être lancé avec les droits administrateur. Utiliser sudo LeScript.py")
+            sys.exit("Ce programme doit être lancé avec les droits administrateur.\nUtiliser sudo LeScript.py")
         print('Vous utilisez un système non Debian (sudo pour administration).')
         distrib = 'ubuntu'
     return distrib
@@ -87,10 +87,10 @@ def installServeur(ip, port,distrib):
     # Affichage Informations
     print("===============================================")
     print("Le serveur de cache est dès lors opérationnel")
-    print("Le port d'écoute est : {}".format(portACN))
-    print("Page d'aministration : http://{}:{}/acng-report.html".format(ipServeur, portACN))
+    print("Le port d'écoute est : {}".format(port))
+    print("Page d'aministration : http://{}:{}/acng-report.html".format(ipServeur, port))
     print("Notez bien l'ip de votre serveur, elle vous sera indispensable pour la configuration des clients.")
-    print("L'IP du serveur est : {} ".format(ipServeur))
+    print("L'IP du serveur est : {} ".format(ip))
     print("Indispensable : cette IP doit être FIXE (réglage sur votre BOX ou serveur DHCP).")
     print("Cette machine est un serveur, mettre de ne l'arrêter. Les mises à jour s'effectuant la nuit.")
 
