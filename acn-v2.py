@@ -37,8 +37,8 @@ def baseDebian():
             sys.exit("Seul le root peut lancer ce script. Nécessite privilèges administrateur.")
         distrib = 'debian'
     else:
-        if os.getenv("SUDO_USER") == None:
-            print("This program need 'sudo'")
+        if not os.geteuid() == 0:
+            print("Ce programme requiert un lancement via 'sudo'")
             sys.exit("Ce programme doit être lancé avec les droits administrateur. Utiliser sudo LeScript.py")
         print('Vous utilisez un système non Debian (sudo pour administration).')
         distrib = 'ubuntu'
