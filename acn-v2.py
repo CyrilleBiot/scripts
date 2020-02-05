@@ -88,7 +88,7 @@ def installServeur(ip, port,distrib):
     print("===============================================")
     print("Le serveur de cache est dès lors opérationnel")
     print("Le port d'écoute est : {}".format(port))
-    print("Page d'aministration : http://{}:{}/acng-report.html".format(ipServeur, port))
+    print("Page d'aministration : http://{}:{}/acng-report.html".format(ip, port))
     print("Notez bien l'ip de votre serveur, elle vous sera indispensable pour la configuration des clients.")
     print("L'IP du serveur est : {} ".format(ip))
     print("Indispensable : cette IP doit être FIXE (réglage sur votre BOX ou serveur DHCP).")
