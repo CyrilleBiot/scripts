@@ -13,6 +13,9 @@ TODO
 
 
 Changelog
+* Jeudi 6 février, 20:57:00  (UTC+0100)
+   Suppression installNmapModule au profit install apt
+
 * Mercredi 5 février, 15:57:00  (UTC+0100)
   Mise en place de l'installation pour les clients et le serveur d'un cron-apt automatisant :
    - la récupération des mises à jour
