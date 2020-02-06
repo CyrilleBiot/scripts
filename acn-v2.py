@@ -340,26 +340,7 @@ def installCronApt(distrib):
 
     return None
 
-def installNmapModule(distrib):
-    """
-    Fonction testant la présent du module nmap
-    L'installe si nécessaire
-    :param distrib: Ubuntu ou Debian
-    :return: None
-    """
-    installPackage('pip3', distrib)
-    testNmapModule = 'nmap' in sys.modules
 
-    if testNmapModule == False:
-        cmdInstallNmap = ['pip3', 'install', 'nmap']
-        # Adaptation système Ubuntu
-        if distrib == 'ubuntu':
-            cmdInstallNmap.insert(0, 'sudo')
-        subprocess.run(cmdInstall)
-        print("Le module nmap vient d'être installé.")
-    else:
-        print('Le module nmap est bien installé.')
-    return None
 
 def main():
     """
@@ -379,7 +360,6 @@ def main():
         # Installation client
         portSelection(portACN)
         ip = ipRecuperation()
-        installNmapModule(distrib)
         ipServeur = chercherServeurACN(ip, portACN)
         ipServeur = validerIpServeurACN(ipServeur)
         installClient(ipServeur,portACN)
