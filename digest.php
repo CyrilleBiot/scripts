@@ -1,8 +1,9 @@
 <?php
 #
 # cyrille <cyrille@cbiot.fr>
-# http://cbiot.fr/pedagogies-alternatives
+# https://cbiot.fr/
 # Licence GPL
+# Update : 2020/02/08
 #
 
 # Debut du script
