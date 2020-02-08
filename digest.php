@@ -1,18 +1,9 @@
 <?php
 #
 # cyrille <cyrille@cbiot.fr>
-# https://cbiot.fr/
+# http://cbiot.fr/pedagogies-alternatives
 # Licence GPL
 #
-
-# Script pour FLUXBB
-# Envoi hebdomadaire des nouveaux messages du forum
-# aux membres du forum
-# 
-# A installer dans le dossier root de fluxBB
-
-
-
 
 # Debut du script
 	$time_start = microtime(true);
@@ -109,8 +100,46 @@ try 	{
 # GESTION DE L'ENVOI DES EMAILS		
 # ===================================
 
+# ===================================
+	# Si membres ne souhaitant pas être dans le digest
+	# leur adresse sont stockées dans un fichier txt
+	# digest-blacklist.txt
+	# Un membre par ligne avec une fausse entrée. Impératif !
+	
+	
+	$filename_blacklist = 'digest-blacklist.txt';
+
+
+	if (file_exists($filename_blacklist)) {
+		$tab_bl = array();
+		$fn = fopen($filename_blacklist,"r");
+  			while(! feof($fn))  {
+			$result = fgets($fn);
+			array_push($tab_bl, $result);
+  			}
+		fclose($fn);
+
+	# Recuperation element tableau
+	foreach ($tab_bl as $arrayElement)
+		$v .= "'" .str_replace(array("\r\n","\n"),'', $arrayElement)."', ";
+
+		
+	# Si le dernier caractère est un espace, une virgule,... , on le supprime
+	$v = str_replace("'',","",$v);
+	$v = rtrim($v, " ");
+	$v = rtrim($v, ",");
+
+
+	$v = preg_replace('[^A-Za-z0-9-]', '', $v);
+	$blacklist = 'WHERE username NOT IN ('.$v.') ' ;  
+
+
+   } else {
+   $blacklist = '';
+	}
+
    # Clause de la requete
-   $sqlClause = ' FROM '.$db_prefix.'users ORDER BY username';
+   $sqlClause = ' FROM '.$db_prefix.'users '. $blacklist ;
 		
 	# Test de la requete
 	$sql = 'SELECT COUNT(*)' . $sqlClause ; 		
@@ -162,9 +191,11 @@ try 	{
 	echo 'Temps d\'execution du script : ' .  $time . ' secondes <br><br>';	
 	echo '<b>Liste des destinataires ('.$nbUsers.') : </b>' . htmlentities($listMailTo) .  '  <br><br>';
 	echo '<b>Sujet : </b>' . $subject .  '  <br><br>' ;
-	echo '<b>voici le mail envoyé : </b><br><br>' ;
+	echo '<b>voici le mail envoyé : </b><br><br>' ;	
 	echo nl2br($messageToScreen).'' ;
+	echo '<br><br><b>User(s) Blacklisté(s) : </b>'. $v ; 
 	
+	echo '<br><br><b>SQL : </b>'. $sql ; 
 
 # Gestion ERREUR PDO
   } catch (PDOException $e) {
