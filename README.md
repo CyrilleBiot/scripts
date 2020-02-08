@@ -67,3 +67,18 @@ Changelog
   version 3.1.0
   Correction Bug décompte des points
   Correction nommage de variables
+
+
+===============================================
+Digest.php
+Patch pour le digest
+# Si membres ne souhaitant pas être dans le digest
+# leur adresse sont stockées dans un fichier txt
+# digest-blacklist.txt
+# Racine du site, même niveau que digest.php
+# Un membre par ligne avec une fausse entrée. Impératif !
+
+ATTENTION LA PREMIERE LIGNE DOIT AVOIR UNE CHAINE DE CARACTERE QUI NE SERA PAS PRISE NE COMPTE
+(c'est un bug qui je ne parviens pas (encore) à résoudre...
+Style ABCDEFABCDEFABCDEFABCDEFABCDEF
+Pas de guillement, pas de quote, juste le nom d'inscription de l'user chaque ligne
