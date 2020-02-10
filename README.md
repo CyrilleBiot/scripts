@@ -2,6 +2,10 @@ Juste un espace de stockage pour quelques scripts.
 
 acn-py
 ----------
+
+ATTENTION : nouveau git pour ce script  : https://github.com/CyrilleBiot/acn-py/tree/master
+Utliser uniquement ce git pour le dev futur
+
 Script automatisant l'installation d'un serveur cache pour apt
 Install aussi cron-apt et configuration d'installation UNIQUEMENT automatique
 des mises à jour de sécurité
